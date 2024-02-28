@@ -1,12 +1,21 @@
-import '@/assets/styles/app/App.css'
+import { useState } from 'react';
+import '@/assets/styles/app/App.css';
+import { Button } from '@mui/material';
 
 const App = () => {
-  const a: string = 'alo';
+  const [counter, setCounter] = useState(0);
+  const increment = () => setCounter(counter + 1);
   return (
-    <>
-      здарова зайбал {a}
-    </>
-  )
-}
+    <div>
+      {counter}
+      <Button
+        variant="text"
+        onClick={increment}
+      >
+        increment
+      </Button>
+    </div>
+  );
+};
 
-export default App
+export default App;
