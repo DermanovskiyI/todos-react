@@ -4,7 +4,8 @@ const App = () => {
   const a: string = 'alo';
   return (
     <>
-      здарова зайбал {a}
+      здарова {a}
+      
     </>
   )
 }
