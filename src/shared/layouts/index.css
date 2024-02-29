@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  background: #423e3e;
+}
+
+main {
+  padding: 16px;
+}
