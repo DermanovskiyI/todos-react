@@ -1,9 +1,7 @@
-import { Link } from 'react-router-dom';
-
 const Account = () => {
   return (
-    <div style={{ padding: 16 }}>
-      <h1>this is test route page</h1>
+    <div>
+      <h1>Test route page</h1>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur alias
         praesentium distinctio minima molestias doloribus ad quia, inventore
@@ -17,7 +15,6 @@ const Account = () => {
         tempore, a optio, veniam vero ratione nesciunt harum quasi impedit sunt
         nam tempora?
       </p>
-      <Link to="/">back</Link>
     </div>
   );
 };
