@@ -13,6 +13,11 @@ import ListItemText from '@mui/material/ListItemText';
 import { Link, Outlet } from 'react-router-dom';
 import { Button } from '@mui/material';
 
+import { logout } from '../model/auth-slice';
+
+import useCheckAuth from '../use/auth/useCheckAuth';
+import { useAppDispatch } from '../use/redux';
+
 const drawerWidth = 240;
 const pages = [
   {
@@ -33,6 +38,8 @@ const pages = [
 ];
 
 const PersonalAccLayout = () => {
+  useCheckAuth();
+  const dispatch = useAppDispatch();
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -82,7 +89,12 @@ const PersonalAccLayout = () => {
           ))}
         </List>
         <Divider />
-        <Button variant="text">Выйти</Button>
+        <Button
+          variant="text"
+          onClick={() => dispatch(logout())}
+        >
+          Выйти
+        </Button>
       </Drawer>
       <Box
         component="main"
