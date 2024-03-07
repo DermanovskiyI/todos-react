@@ -11,7 +11,7 @@ const useCheckAuth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('effectt', isAutorized);
+    console.log('effecttttt', isAutorized);
     if (!isAutorized) {
       navigate('/');
     }
