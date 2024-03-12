@@ -16,6 +16,9 @@ const useCheckAuth = () => {
       navigate('/');
     }
   }, [isAutorized]);
+  return {
+    isAutorized,
+  };
 };
 
 export default useCheckAuth;

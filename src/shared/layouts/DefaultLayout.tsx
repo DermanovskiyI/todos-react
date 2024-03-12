@@ -5,8 +5,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link, Outlet } from 'react-router-dom';
-
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import AuthModal from '@/features/auth/components/modal/AuthModal';
+import { IModalConfig, ModalContext } from '../context/modal/ModalContext';
+import { useContext } from 'react';
+import useCheckAuth from '../use/auth/useCheckAuth';
 const pages = [
   {
     id: 1,
@@ -16,16 +19,26 @@ const pages = [
   {
     id: 2,
     path: '/todo',
-    value: 'About',
-  },
-  {
-    id: 3,
-    path: '/account',
-    value: 'Account',
+    value: 'Todo',
   },
 ];
 
 export default function RootLayout() {
+  const modal = useContext(ModalContext);
+  const navigate = useNavigate();
+  const checkAuth = useCheckAuth();
+  const openAuthModal = () => {
+    if (checkAuth.isAutorized) {
+      navigate('/account');
+      return;
+    }
+
+    const authModalConfig: IModalConfig = {
+      content: <AuthModal navigate={navigate} />,
+    };
+
+    modal.open(authModalConfig);
+  };
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -52,6 +65,12 @@ export default function RootLayout() {
                 </Link>
               </Button>
             ))}
+            <Button
+              variant="contained"
+              onClick={openAuthModal}
+            >
+              Личный кабинет
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

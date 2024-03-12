@@ -1,7 +1,7 @@
 const TodoList = (props) => {
   return (
     <div>
-      <div>todolist page</div>
+      <h1>Todo page</h1>
     </div>
   );
 };
